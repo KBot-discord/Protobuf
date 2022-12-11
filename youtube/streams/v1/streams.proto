@@ -6,7 +6,8 @@ message Stream {
   string id = 1;
   string title = 2;
   string channel_id = 3;
-  repeated string guild_ids = 4;
+  string starts_at = 4;
+  repeated string guild_ids = 5;
 }
 
 // GetStream
