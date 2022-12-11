@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package channels.v1;
+
+message Channel {
+	string id = 1;
+	string name = 2;
+	string image = 3;
+}
+
+message GetChannelRequest {
+	string channel_id = 1;
+}
+
+message GetChannelResponse {
+	Channel channel = 1;
+}
+
+message GetChannelsRequest {
+	string guild_id = 1;
+}
+
+message GetChannelsResponse {
+	repeated Channel channels = 1;
+}
+
+service ChannelService {
+  rpc GetChannel (GetChannelRequest) returns (GetChannelResponse);
+  rpc GetChannels (GetChannelsRequest) returns (GetChannelsResponse);
+}

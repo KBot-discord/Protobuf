@@ -1,0 +1,10 @@
+version: v1
+name: buf.build/kbotdev/bot
+breaking:
+  use:
+    - FILE
+lint:
+  enum_zero_value_suffix: UNDEFINED
+  use:
+    - DEFAULT
+  service_suffix: Service

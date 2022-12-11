@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package streams.v1;
+
+message Stream {
+  string id = 1;
+  string title = 2;
+  string channel_id = 3;
+  repeated string guild_ids = 4;
+}
+
+message GetStreamRequest {
+  string stream_id = 1;
+}
+
+message GetStreamResponse {
+  Stream stream = 1;
+}
+
+message GetStreamsRequest {
+  string channel_id = 1;
+}
+
+message GetStreamsResponse {
+  repeated Stream streams = 1;
+}
+
+service StreamService {
+  rpc GetStream (GetStreamRequest) returns (GetStreamResponse);
+  rpc GetStreams (GetStreamsRequest) returns (GetStreamsResponse);
+}

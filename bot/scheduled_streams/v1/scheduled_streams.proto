@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package scheduled_streams.v1;
+
+message Stream {
+	string id = 1;
+	string title = 2;
+	string channel_id = 3;
+	repeated string guild_ids = 4;
+}
+
+message GetScheduledStreamRequest {
+	string stream_id = 1;
+}
+
+message GetScheduledStreamResponse {
+	Stream stream = 1;
+}
+
+message GetScheduledStreamsRequest {
+	string channel_id = 1;
+}
+
+message GetScheduledStreamsResponse {
+	repeated Stream streams = 1;
+}
+
+message PostScheduledStreamRequest {
+	Stream stream = 1;
+}
+
+message PostScheduledStreamResponse {
+	repeated string message_ids = 1;
+}
+
+service ScheduleStreamService {
+	rpc GetScheduledStream (GetScheduledStreamRequest) returns (GetScheduledStreamResponse);
+	rpc GetScheduledStreams (GetScheduledStreamsRequest) returns (GetScheduledStreamsResponse);
+	rpc PostScheduledStream (PostScheduledStreamRequest) returns (PostScheduledStreamResponse);
+}

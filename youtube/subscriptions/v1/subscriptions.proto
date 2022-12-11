@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package subscriptions.v1;
+
+message Stream {
+  string id = 1;
+  string title = 2;
+  string channel_id = 3;
+  repeated string guild_ids = 4;
+}
+
+message GetSubscriptionRequest {
+  string stream_id = 1;
+}
+
+message GetSubscriptionResponse {
+  Stream stream = 1;
+}
+
+message GetGuildSubscriptionsRequest {
+  string guild_id = 1;
+}
+
+message GetGuildSubscriptionsResponse {
+  repeated Stream stream = 1;
+}
+
+message GetChannelSubscriptionsRequest {
+  string channel_id = 1;
+}
+
+message GetChannelSubscriptionsResponse {
+  repeated Stream stream = 1;
+}
+
+service SubscriptionService {
+  rpc GetSubscription (GetSubscriptionRequest) returns (GetSubscriptionResponse);
+  rpc GetGuildSubscriptions (GetGuildSubscriptionsRequest) returns (GetGuildSubscriptionsResponse);
+  rpc GetChannelSubscriptions (GetChannelSubscriptionsRequest) returns (GetChannelSubscriptionsResponse);
+}
