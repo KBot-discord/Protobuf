@@ -2,43 +2,38 @@ syntax = "proto3";
 
 package scheduled_streams.v1;
 
-message Stream {
-	string id = 1;
-	string title = 2;
-	string channel_id = 3;
-	repeated string guild_ids = 4;
-}
-
-// GetScheduledStream
-message GetScheduledStreamRequest {
-	string stream_id = 1;
-}
-
-message GetScheduledStreamResponse {
-	Stream stream = 1;
-}
-
-// GetScheduledStreams
-message GetScheduledStreamsRequest {
-	string channel_id = 1;
-}
-
-message GetScheduledStreamsResponse {
-	repeated Stream streams = 1;
-}
+import "streams/v1/streams.proto";
+import "subscriptions/v1/subscriptions.proto";
 
 // PostScheduledStream
 message PostScheduledStreamRequest {
-	Stream stream = 1;
+	streams.v1.Stream stream = 1;
+  repeated subscriptions.v1.Subscription subscriptions = 2;
 }
 
 message PostScheduledStreamResponse {
 	repeated string message_ids = 1;
 }
 
+// UpdateScheduledStream
+message UpdateScheduledStreamRequest {
+  streams.v1.Stream stream = 1;
+  repeated string message_ids = 2;
+}
+
+message UpdateScheduledStreamResponse {}
+
+// EndScheduledStream
+message EndScheduledStreamRequest {
+  streams.v1.Stream stream = 1;
+  repeated string message_ids = 2;
+}
+
+message EndScheduledStreamResponse {}
+
 // ScheduleStreamService
 service ScheduleStreamService {
-	rpc GetScheduledStream (GetScheduledStreamRequest) returns (GetScheduledStreamResponse);
-	rpc GetScheduledStreams (GetScheduledStreamsRequest) returns (GetScheduledStreamsResponse);
 	rpc PostScheduledStream (PostScheduledStreamRequest) returns (PostScheduledStreamResponse);
+  rpc UpdateScheduledStream (UpdateScheduledStreamRequest) returns (UpdateScheduledStreamResponse);
+  rpc EndScheduledStream (EndScheduledStreamRequest) returns (EndScheduledStreamResponse);
 }
