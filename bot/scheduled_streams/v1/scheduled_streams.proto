@@ -9,6 +9,7 @@ message Stream {
 	repeated string guild_ids = 4;
 }
 
+// GetScheduledStream
 message GetScheduledStreamRequest {
 	string stream_id = 1;
 }
@@ -17,6 +18,7 @@ message GetScheduledStreamResponse {
 	Stream stream = 1;
 }
 
+// GetScheduledStreams
 message GetScheduledStreamsRequest {
 	string channel_id = 1;
 }
@@ -25,6 +27,7 @@ message GetScheduledStreamsResponse {
 	repeated Stream streams = 1;
 }
 
+// PostScheduledStream
 message PostScheduledStreamRequest {
 	Stream stream = 1;
 }
@@ -33,6 +36,7 @@ message PostScheduledStreamResponse {
 	repeated string message_ids = 1;
 }
 
+// ScheduleStreamService
 service ScheduleStreamService {
 	rpc GetScheduledStream (GetScheduledStreamRequest) returns (GetScheduledStreamResponse);
 	rpc GetScheduledStreams (GetScheduledStreamsRequest) returns (GetScheduledStreamsResponse);
