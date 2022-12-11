@@ -19,8 +19,8 @@ test:
   stage: test
   script:
     - buf build $SUB_DIR
-    - cd $SUB_DIR
-    - buf breaking --against "$CI_REPOSITORY_URL#branch=$BREAKING_BRANCH,subdir=$SUB_DIR"
+    # - cd $SUB_DIR
+    # - buf breaking --against "$CI_REPOSITORY_URL#branch=$BREAKING_BRANCH,subdir=$SUB_DIR"
   variables:
     BREAKING_BRANCH: $CI_COMMIT_BRANCH
   rules:
