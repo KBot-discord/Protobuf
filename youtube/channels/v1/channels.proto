@@ -17,17 +17,7 @@ message GetChannelResponse {
 	Channel channel = 1;
 }
 
-// GetChannels
-message GetChannelsRequest {
-	string guild_id = 1;
-}
-
-message GetChannelsResponse {
-	repeated Channel channels = 1;
-}
-
 // ChannelService
 service ChannelService {
   rpc GetChannel (GetChannelRequest) returns (GetChannelResponse);
-  rpc GetChannels (GetChannelsRequest) returns (GetChannelsResponse);
 }

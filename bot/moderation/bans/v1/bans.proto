@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package moderation.bans.v1;
+
+message Ban {
+  string user_id = 1;
+  string reason = 2;
+}
+
+// GetBan
+message GetBanRequest {
+  string user_id = 1;
+}
+
+message GetBanResponse {
+  Ban ban = 1;
+}
+
+// BanService
+service BanService {
+  rpc GetBan (GetBanRequest) returns (GetBanResponse);
+}

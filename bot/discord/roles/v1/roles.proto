@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package discord.roles.v1;
+
+message Role {
+  string id = 1;
+  string name = 2;
+  int32 position = 3;
+  string color = 4;
+}
+
+// GetRoles
+message GetRolesRequest {
+  string guild_id = 1;
+}
+
+message GetRolesResponse {
+  repeated Role roles = 1;
+}
+
+// RoleService
+service RoleService {
+  rpc GetRoles (GetRolesRequest) returns (GetRolesResponse);
+}
