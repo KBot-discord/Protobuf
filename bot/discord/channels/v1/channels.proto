@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package discord.channels.v1;
+
+message Channel {
+  string id = 1;
+  string name = 2;
+  int32 position = 3;
+}
+
+// GetTextChannels
+message GetTextChannelsRequest {
+  string guild_id = 1;
+}
+
+message GetTextChannelsResponse {
+  repeated Channel channels = 1;
+}
+
+// GetVoiceChannels
+message GetVoiceChannelsRequest {
+  string guild_id = 1;
+}
+
+message GetVoiceChannelsResponse {
+  repeated Channel channels = 1;
+}
+
+// ChannelService
+service ChannelService {
+  rpc GetTextChannels (GetTextChannelsRequest) returns (GetTextChannelsResponse);
+  rpc GetVoiceChannels (GetVoiceChannelsRequest) returns (GetVoiceChannelsResponse);
+}
