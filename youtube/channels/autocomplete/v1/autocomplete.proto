@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package channels.autocomplete.v1;
+
+import "channels/v1/channels.proto";
+
+// GetAutocompleteChannel
+message GetAutocompleteChannelRequest {
+  string channel_name = 1;
+}
+
+message GetAutocompleteChannelResponse {
+  repeated channels.v1.Channel channels = 1;
+}
+
+// ChannelService
+service ChannelService {
+  rpc GetAutocompleteChannel (GetAutocompleteChannelRequest) returns (GetAutocompleteChannelResponse);
+}
