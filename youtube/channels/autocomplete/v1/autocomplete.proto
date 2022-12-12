@@ -13,7 +13,7 @@ message GetAutocompleteChannelResponse {
   repeated channels.v1.Channel channels = 1;
 }
 
-// ChannelService
-service ChannelService {
+// AutocompleteChannelService
+service AutocompleteChannelService {
   rpc GetAutocompleteChannel (GetAutocompleteChannelRequest) returns (GetAutocompleteChannelResponse);
 }
