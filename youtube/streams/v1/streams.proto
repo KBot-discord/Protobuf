@@ -7,7 +7,7 @@ message Stream {
   string title = 2;
   string channel_id = 3;
   string starts_at = 4;
-  repeated string guild_ids = 5;
+  repeated string message_data = 5; // guild_id:discord_channel_id:message_id
 }
 
 // GetStream
@@ -28,8 +28,17 @@ message GetStreamsResponse {
   repeated Stream streams = 1;
 }
 
+// UpdateStreamMessageData
+message UpdateStreamMessageDataRequest {
+  string stream_id = 1;
+  repeated string message_data = 2; // guild_id:discord_channel_id:message_id
+}
+
+message UpdateStreamMessageDataResponse {}
+
 // StreamService
 service StreamService {
   rpc GetStream (GetStreamRequest) returns (GetStreamResponse);
   rpc GetStreams (GetStreamsRequest) returns (GetStreamsResponse);
+  rpc UpdateStreamMessageData (UpdateStreamMessageDataRequest) returns (UpdateStreamMessageDataResponse);
 }

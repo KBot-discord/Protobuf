@@ -5,25 +5,17 @@ package scheduled_streams.v1;
 import "streams/v1/streams.proto";
 import "subscriptions/v1/subscriptions.proto";
 
-message MessageData {
-  string message_id = 1;
-  string channel_id = 2;
-}
-
 // PostScheduledStream
 message PostScheduledStreamRequest {
 	streams.v1.Stream stream = 1;
   repeated subscriptions.v1.Subscription subscriptions = 2;
 }
 
-message PostScheduledStreamResponse {
-	repeated MessageData message_ids = 1;
-}
+message PostScheduledStreamResponse {}
 
 // UpdateScheduledStream
 message UpdateScheduledStreamRequest {
   streams.v1.Stream stream = 1;
-  repeated MessageData message_ids = 2;
 }
 
 message UpdateScheduledStreamResponse {}
@@ -31,7 +23,6 @@ message UpdateScheduledStreamResponse {}
 // EndScheduledStream
 message EndScheduledStreamRequest {
   streams.v1.Stream stream = 1;
-  repeated MessageData message_ids = 2;
 }
 
 message EndScheduledStreamResponse {}
