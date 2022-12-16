@@ -47,6 +47,7 @@ message GetGuildSubscriptionsResponse {
 // DeleteGuildSubscriptions
 message DeleteGuildSubscriptionsRequest {
   string guild_id = 1;
+  repeated string channel_ids = 2;
 }
 
 message DeleteGuildSubscriptionsResponse {}
