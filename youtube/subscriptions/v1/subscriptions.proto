@@ -6,25 +6,25 @@ message Subscription {
   string message = 1;
   string role = 2;
   string discord_channel = 3;
-	string webhook_id = 4;
-	string webhook_token = 5;
-	string channel_id = 6;
-	string guild_id = 7;
+  string webhook_id = 4;
+  string webhook_token = 5;
+  string channel_id = 6;
+  string guild_id = 7;
 }
 
 // GetSubscription
 message GetSubscriptionRequest {
-	string channel_id = 1;
-	string guild_id = 2;
+  string channel_id = 1;
+  string guild_id = 2;
 }
 
 message GetSubscriptionResponse {
-	Subscription subscription = 1;
+  Subscription subscription = 1;
 }
 
 // PostSubscription
 message PostSubscriptionRequest {
-	Subscription subscription = 1;
+  Subscription subscription = 1;
 }
   
 message PostSubscriptionResponse {}
@@ -53,15 +53,6 @@ message DeleteGuildSubscriptionsRequest {
 
 message DeleteGuildSubscriptionsResponse {}
 
-// GetChannelSubscriptions
-message GetChannelSubscriptionsRequest {
-  string channel_id = 1;
-}
-
-message GetChannelSubscriptionsResponse {
-  repeated Subscription subscriptions = 1;
-}
-
 // SubscriptionService
 service SubscriptionService {
   rpc GetSubscription (GetSubscriptionRequest) returns (GetSubscriptionResponse);
@@ -69,5 +60,4 @@ service SubscriptionService {
   rpc DeleteSubscription (DeleteSubscriptionRequest) returns (DeleteSubscriptionResponse);
   rpc GetGuildSubscriptions (GetGuildSubscriptionsRequest) returns (GetGuildSubscriptionsResponse);
   rpc DeleteGuildSubscriptions (DeleteGuildSubscriptionsRequest) returns (DeleteGuildSubscriptionsResponse);
-  rpc GetChannelSubscriptions (GetChannelSubscriptionsRequest) returns (GetChannelSubscriptionsResponse);
 }

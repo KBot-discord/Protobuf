@@ -3,18 +3,18 @@ syntax = "proto3";
 package channels.v1;
 
 message Channel {
-	string id = 1;
-	string name = 2;
-	string image = 3;
+  string id = 1;
+  string name = 2;
+  string image = 3;
 }
 
 // GetChannel
 message GetChannelRequest {
-	string channel_id = 1;
+  string channel_id = 1;
 }
 
 message GetChannelResponse {
-	Channel channel = 1;
+  Channel channel = 1;
 }
 
 // ChannelService
