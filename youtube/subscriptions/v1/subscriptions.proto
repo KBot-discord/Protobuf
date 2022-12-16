@@ -14,17 +14,17 @@ message Subscription {
 
 // GetSubscription
 message GetSubscriptionRequest {
-	string channel_id = 1;
-	string guild_id = 2;
+  string channel_id = 1;
+  string guild_id = 2;
 }
 
 message GetSubscriptionResponse {
-	Subscription subscription = 1;
+  Subscription subscription = 1;
 }
 
 // PostSubscription
 message PostSubscriptionRequest {
-	Subscription subscription = 1;
+  Subscription subscription = 1;
 }
   
 message PostSubscriptionResponse {}
