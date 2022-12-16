@@ -6,8 +6,6 @@ message Subscription {
   string message = 1;
   string role = 2;
   string discord_channel = 3;
-  string webhook_id = 4;
-  string webhook_token = 5;
   string channel_id = 6;
   string guild_id = 7;
 }
