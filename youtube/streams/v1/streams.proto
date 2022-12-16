@@ -9,26 +9,16 @@ message Stream {
   string starts_at = 4;
 }
 
-// GetStream
-message GetStreamRequest {
-  string stream_id = 1;
-}
-
-message GetStreamResponse {
-  Stream stream = 1;
-}
-
 // GetStreams
-message GetStreamsRequest {
+message GetChannelStreamsRequest {
   string channel_id = 1;
 }
 
-message GetStreamsResponse {
+message GetChannelStreamsResponse {
   repeated Stream streams = 1;
 }
 
 // StreamService
 service StreamService {
-  rpc GetStream (GetStreamRequest) returns (GetStreamResponse);
-  rpc GetStreams (GetStreamsRequest) returns (GetStreamsResponse);
+  rpc GetChannelStreams (GetChannelStreamsRequest) returns (GetChannelStreamsResponse);
 }
