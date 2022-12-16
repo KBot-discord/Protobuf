@@ -53,15 +53,6 @@ message DeleteGuildSubscriptionsRequest {
 
 message DeleteGuildSubscriptionsResponse {}
 
-// GetChannelSubscriptions
-message GetChannelSubscriptionsRequest {
-  string channel_id = 1;
-}
-
-message GetChannelSubscriptionsResponse {
-  repeated Subscription subscriptions = 1;
-}
-
 // SubscriptionService
 service SubscriptionService {
   rpc GetSubscription (GetSubscriptionRequest) returns (GetSubscriptionResponse);
@@ -69,5 +60,4 @@ service SubscriptionService {
   rpc DeleteSubscription (DeleteSubscriptionRequest) returns (DeleteSubscriptionResponse);
   rpc GetGuildSubscriptions (GetGuildSubscriptionsRequest) returns (GetGuildSubscriptionsResponse);
   rpc DeleteGuildSubscriptions (DeleteGuildSubscriptionsRequest) returns (DeleteGuildSubscriptionsResponse);
-  rpc GetChannelSubscriptions (GetChannelSubscriptionsRequest) returns (GetChannelSubscriptionsResponse);
 }
