@@ -2,18 +2,11 @@ syntax = "proto3";
 
 package streams.v1;
 
-message MessageData {
-  string guild_id = 1;
-  string channel_id = 2;
-  string message_id = 3;
-}
-
 message Stream {
   string id = 1;
   string title = 2;
   string channel_id = 3;
   string starts_at = 4;
-  repeated MessageData message_data = 5;
 }
 
 // GetStream
