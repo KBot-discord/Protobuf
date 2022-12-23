@@ -30,7 +30,9 @@ message PostSubscriptionRequest {
   string guild_id = 5;
 }
   
-message PostSubscriptionResponse {}
+message PostSubscriptionResponse {
+  Subscription subscription = 1;
+}
 
 // DeleteSubscription
 message DeleteSubscriptionRequest {
