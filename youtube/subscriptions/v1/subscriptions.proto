@@ -3,11 +3,12 @@ syntax = "proto3";
 package subscriptions.v1;
 
 message Subscription {
-  string message = 1;
-  string role = 2;
-  string discord_channel = 3;
-  string channel_id = 4;
-  string guild_id = 5;
+  string channel_id = 1;
+  string channel_name = 2;
+  string channel_image = 3;
+  string message = 4;
+  string role = 5;
+  string discord_channel = 6;
 }
 
 // GetSubscription
@@ -22,7 +23,11 @@ message GetSubscriptionResponse {
 
 // PostSubscription
 message PostSubscriptionRequest {
-  Subscription subscription = 1;
+  string message = 1;
+  string role = 2;
+  string discord_channel = 3;
+  string channel_id = 4;
+  string guild_id = 5;
 }
   
 message PostSubscriptionResponse {}
