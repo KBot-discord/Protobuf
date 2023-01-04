@@ -1,0 +1,26 @@
+name: buf-push
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'bot/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: bufbuild/buf-setup-action@v1
+      - uses: bufbuild/buf-lint-action@v1
+        with:
+          input: "bot"
+      # - uses: bufbuild/buf-breaking-action@v1
+      #   with:
+      #     input: "bot"
+      #     against: "https://github.com/${GITHUB_REPOSITORY}.git#branch=main,ref=HEAD~1"
+      - uses: bufbuild/buf-push-action@v1
+        with:
+          input: "bot"
+          buf_token: ${{ secrets.BUF_TOKEN }}
