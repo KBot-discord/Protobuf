@@ -1,4 +1,4 @@
-name: buf-pull-request
+name: bot-pull-request
 
 on:
   pull_request:
