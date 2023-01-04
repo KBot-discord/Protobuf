@@ -1,4 +1,4 @@
-name: buf-pull-request
+name: youtube-pull-request
 
 on:
   pull_request:

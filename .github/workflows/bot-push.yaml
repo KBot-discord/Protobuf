@@ -1,4 +1,4 @@
-name: buf-push
+name: bot-push
 
 on:
   push:

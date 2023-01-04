@@ -1,4 +1,4 @@
-name: buf-push
+name: youtube-push
 
 on:
   push:
