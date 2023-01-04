@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package moderation.modlogs.v1;
+
+message LogEntry {
+  string action = 1;
+  string moderator_id = 2;
+  string reason = 3;
+}
+
+// GetLogs
+message GetLogsRequest {
+  string user_id = 1;
+  string guild_id = 2;
+}
+
+message GetLogsResponse {
+  repeated LogEntry log = 1;
+}
+
+// ModlogService
+service ModlogService {
+  rpc GetLogs (GetLogsRequest) returns (GetLogsResponse);
+}
