@@ -1,4 +1,4 @@
-name: bot-pull-request
+name: CI (Bot)
 
 on:
   pull_request:
@@ -9,14 +9,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: bufbuild/buf-setup-action@v1
-        with:
-          version: "1.11.0"
-      - uses: bufbuild/buf-lint-action@v1
+      - name: Check out Git repository
+        uses: actions/checkout@v3
+
+      - name: Buf setup
+        uses: bufbuild/buf-setup-action@v1
+
+      - name: Buf lint
+        uses: bufbuild/buf-lint-action@v1
         with:
           input: "bot"
-      # - uses: bufbuild/buf-breaking-action@v1
-      #   with:
-      #     input: "bot"
-      #     against: "https://github.com/${GITHUB_REPOSITORY}.git#branch=main,ref=HEAD~1,subdir=bot"
+
+      #- name: Buf breaking
+      #  uses: bufbuild/buf-breaking-action@v1
+      #  with:
+      #    input: "bot"
+      #    against: "https://github.com/${GITHUB_REPOSITORY}.git#branch=main,ref=HEAD~1,subdir=bot"
