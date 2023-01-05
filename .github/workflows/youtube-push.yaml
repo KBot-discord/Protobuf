@@ -1,26 +1,37 @@
-name: youtube-push
+name: CD (Youtube)
 
 on:
   push:
-    branches:
-      - main
     paths:
       - 'youtube/**'
 
 jobs:
   build:
+    name: Push
     runs-on: ubuntu-latest
+
+    if: ${{ github.repository_owner == 'kbot-discord' && github.ref == 'refs/heads/main' }}
+
     steps:
-      - uses: actions/checkout@v2
-      - uses: bufbuild/buf-setup-action@v1
-      - uses: bufbuild/buf-lint-action@v1
+      - name: Check out Git repository
+        uses: actions/checkout@v3
+
+      - name: Buf setup
+        uses: bufbuild/buf-setup-action@v1
+
+      - name: Buf lint
+        uses: bufbuild/buf-lint-action@v1
         with:
           input: "youtube"
-      # - uses: bufbuild/buf-breaking-action@v1
-      #   with:
-      #     input: "youtube"
-      #     against: "https://github.com/${GITHUB_REPOSITORY}.git#branch=main,ref=HEAD~1,subdir=youtube"
-      - uses: bufbuild/buf-push-action@v1
+
+      #- name: Buf breaking
+      #  uses: bufbuild/buf-breaking-action@v1
+      #  with:
+      #    input: "youtube"
+      #    against: "https://github.com/${GITHUB_REPOSITORY}.git#branch=main,ref=HEAD~1,subdir=youtube"
+
+      - name: Buf push
+        uses: bufbuild/buf-push-action@v1
         with:
           input: "youtube"
           buf_token: ${{ secrets.BUF_TOKEN }}
